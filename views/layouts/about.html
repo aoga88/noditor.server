@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="contain-to-grid">
+        <div class="row">
+            <div class="large-12 column">
+                <nav id="menu" class="top-bar">
+
+                    <ul class="title-area">
+                        <li class="name">
+                            <a href="/">
+                                <img src="/img/name_home.png" alt="noditor.me">
+                            </a>
+                        </li>
+                        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a>
+                        </li>
+                    </ul>
+
+                    <section class="top-bar-section">
+                        <ul class="right">
+                            <li><a href="/about">ABOUT</a>
+                            </li>
+                            <li><a href="/support">SUPPORT</a>
+                            </li>
+                            <li><a href="/login">LOG IN</a>
+                            </li>
+                            <li id="signup"><a href="/signup" class="button no-margin">SIGN UP</a>
+                            </li>
+                        </ul>
+                    </section>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="main" role="main">
+
+        <div class="breadcrumb-container">
+            <div class="row">
+                <div class="large-12 column">
+                    <nav class="breadcrumbs animated bounceInDown">
+                        <a href="/">Home</a>
+                        <a class="current" href="#">About Us</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <section class="part">
+            <div class="row title">
+                <div class="large-12 column">
+                    <h6>We are a group of professionals dedicated to make things happen</h6>
+                </div>
+            </div>
+        </section>
+
+        <section class="part">
+            <div class="row title">
+                <div class="large-12 column">
+                    <h6>Meet the team</h6>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-4 column">
+                    <h6 class="text-center">Osvaldo García <small>- CEO</small></h6>
+                    <div class="popup text-center">
+                        <a href="/img/person1.jpg">
+                            <img src="/img/person1.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="about-social">
+                        <a href="http://www.facebook.com/aoga88" target="_blank" class="icon-facebook"></a>
+                        <a href="http://lnkd.in/bYTHVKt" target="_blank" class="icon-linkedin"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+
+    <a id="back-top" href="#"><i class="icon-caret-up"></i></a>
+
+    <footer>
+        <div class="row spacy">
+            <div class="large-6 column">
+
+            </div>
+
+            <div class="large-2 column">
+                <h4>Services</h4>
+                <ul class="side-nav">
+                    <li><a href="/about">About us</a>
+                    </li>
+                    <li><a href="/terms">Terms of Service</a>
+                    </li>
+                    <li><a href="/privacy">Privacy Policy</a>
+                    </li>
+                    <li><a href="/contact">Contact us</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="large-4 column">
+                <h4>Contact</h4>
+
+                <div class="row">
+                    <div class="small-3 column text">
+                        <h6>Phone:</h6>
+                    </div>
+                    <div class="small-9 column text">
+                        <p>+52 55 65 45 77 21</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="small-3 column text">
+                        <h6>Email:</h6>
+                    </div>
+                    <div class="small-9 column text">
+                        <p>
+                            <a href="mailto:info@noditor.me">info@noditor.me</a>
+                            <br>
+                            <a href="mailto:suppport@noditor.me">support@noditor.me</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 column">
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="small-12 large-4 large-uncentered column copyright">
+                Copyright &copy; 2014 noditor.me
+            </p>
+
+            <p class="small-12 large-8 column social">
+                <a href="mailto:info@noditor.me"><i class="icon-envelope"></i></a>
+                <a href="//www.facebook.com/noditor.me" target="_blank"><i class="icon-facebook"></i></a>
+                <a href="//www.twitter.com" target="_blank"><i class="icon-twitter"></i></a>
+                <!-- <a href="//www.linkedin.com" target="_blank"><i class="icon-linkedin"></i></a> -->
+            </p>
+        </div>
+
+    </footer>
+
+    <!-- Javascript -->
+    <script src="/js/vendor/custom.modernizr.js"></script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/vendor/jquery.magnific-popup.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script src="/js/foundation/foundation.topbar.js"></script>
+    <script src="/js/foundation/foundation.section.js"></script>
+    <script src="/js/filoxenia.js"></script>
+    <script src="/js/custom.js"></script>
+{% endblock %}

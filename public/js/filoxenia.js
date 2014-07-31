@@ -10,7 +10,7 @@ $(document).foundation();
 // Initialize Modernizr
 Modernizr.load([{
     test: Modernizr.mq('only all'), // Test if the browser understands Media Queries?
-    nope: 'js/vendor/respond.js' // If not, load the respond.js file
+    nope: '/js/vendor/respond.js' // If not, load the respond.js file
 }]);
 
 // Run only in bigger screens

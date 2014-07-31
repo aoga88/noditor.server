@@ -42,6 +42,12 @@ var routes = [
         method: 'get',
         auth:   false
     },
+    {
+        route: '/about',
+        action: indexController.about,
+        method: 'get',
+        auth:   false
+    },
 ];
 
 routes.forEach(function(element){
