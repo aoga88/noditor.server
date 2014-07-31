@@ -7,3 +7,8 @@ exports.about = function(req, res)
 {
 	res.render("layouts/about");
 }
+
+exports.support = function(req, res)
+{
+	res.render("layouts/support");
+}

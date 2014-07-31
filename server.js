@@ -48,6 +48,24 @@ var routes = [
         method: 'get',
         auth:   false
     },
+    {
+        route: '/support',
+        action: indexController.support,
+        method: 'get',
+        auth:   false
+    },
+    {
+        route: '/login',
+        action: userController.login,
+        method: 'get',
+        auth:   false
+    },
+    {
+        route: '/signup',
+        action: userController.signup,
+        method: 'get',
+        auth:   false
+    },
 ];
 
 routes.forEach(function(element){
