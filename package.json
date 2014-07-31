@@ -1,23 +1,20 @@
 {
-  "name": "OpenShift-Sample-App",
+  "name": "noditor.me",
   "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "description": "NoditorJS server app",
   "keywords": [
     "OpenShift",
     "Node.js",
     "application",
-    "openshift"
+    "openshift",
+    "noditorjs"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "Osvaldo Garcia",
+    "email": "osvaldo@noditor.me",
+    "url": "http://www.noditor.me/"
   },
-  "homepage": "http://www.openshift.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/openshift/origin-server"
-  },
+  "homepage": "http://www.noditor.me/",
 
   "engines": {
     "node": ">= 0.6.0",
@@ -25,7 +22,9 @@
   },
 
   "dependencies": {
-    "express": "~3.4.4"
+    "express": "~3.4.4",
+    "mongoose": "*",
+    "swig": "*"
   },
   "devDependencies": {},
   "bundleDependencies": [],

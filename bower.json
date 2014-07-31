@@ -1,0 +1,39 @@
+{
+  "name": "noditor",
+  "version": "0.0.1",
+  "authors": [
+    "Osvaldo Garcia <osvaldo@noditor.me>"
+  ],
+  "description": "noditor.me",
+  "main": "server.js",
+  "keywords": [
+    "noditor",
+    "nodejs",
+    "meanio",
+    "angularjs",
+    "bootstrap",
+    "ng",
+    "bower"
+  ],
+  "license": "MIT",
+  "homepage": "http://qualityup.org",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular":"*",
+    "bootstrap":"*",
+    "jquery":"*",
+    "angular-cookies":"*",
+    "angular-resource":"*",
+    "angular-route":"*",
+    "requirejs": "*",
+    "less": "*"
+  }
+}
