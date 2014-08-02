@@ -37,7 +37,7 @@ exports.signupAction = function(req, res)
 	user.password = shasum.digest('hex');
 
 	var mailgun = new Mailgun({
-		apiKey: process.env.MAILGUN_APIKEY,
+		apiKey: process.env.MAILGUN_APIKEY || 'key-9mh0z2vm6cxwa25iq3wmumzuh1m92hr2',
 		domain: domain
 	});
 
