@@ -32,8 +32,10 @@ function setupVariables() {
     };
 };
 
-var userController  = require('./controllers/user');
-var indexController   = require('./controllers/index');
+var userController   = require('./controllers/user');
+var indexController  = require('./controllers/index');
+var entityController = require('./controllers/entity');
+var appController = require('./controllers/app');
 
 var routes = [
     {
@@ -61,10 +63,52 @@ var routes = [
         auth:   false
     },
     {
+        route: '/logout',
+        action: userController.logout,
+        method: 'get',
+        auth:   false
+    },
+    {
         route: '/signup',
         action: userController.signup,
         method: 'get',
         auth:   false
+    },
+    {
+        route: '/signup',
+        action: userController.signupAction,
+        method: 'post',
+        auth:   false
+    },
+    {
+        route: '/api/:entity/find',
+        action: entityController.find,
+        method: 'post',
+        auth:   true
+    },
+    {
+        route: '/api/:entity',
+        action: entityController.save,
+        method: 'post',
+        auth:   true
+    },
+    {
+        route: '/api/user/login',
+        action: userController.loginAction,
+        method: 'post',
+        auth:   false
+    },
+    {
+        route: '/app',
+        action: appController.index,
+        method: 'get',
+        auth:   true
+    },
+    {
+        route: '/app/profile',
+        action: appController.profile,
+        method: 'get',
+        auth:   true
     },
 ];
 

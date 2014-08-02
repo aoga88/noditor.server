@@ -33,7 +33,7 @@
         </div>
     </header>
 
-    <section id="main" role="main">
+    <section id="main" role="main" ng-controller="RegisterController">
 
         <div class="breadcrumb-container">
             <div class="row">
@@ -47,34 +47,37 @@
         </div>
 
         <section class="part">
-            <form class="text-center" action="signup.html" method="post">
+            <form class="text-center" method="post" action="/signup" name="registerForm" role="form">
                 <div class="row title">
                     <div class="large-12 column">
                         <h6>New Account</h6>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="large-4 large-centered columns">
-                        <input type="text" placeholder="Name">
+                 <div class="row">
+                    <div class="alert alert-info">
+                        We don't require your credit card information, we use PayPal as our safe payment service.
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="large-4 large-centered columns">
-                        <input type="text" placeholder="Company Name">
+                    <div class="large-4 large-centered columns form-group" ng-class="{'has-success': registerForm.name.$valid, 'has-error': registerForm.name.$invalid}">
+                        <input type="text" class="form-control" placeholder="Name" name="name" ng-model="user.name" ng-required="true" autocomplete="off">
+                        <div class="alert alert-danger" ng-show="registerForm.name.$invalid && !registerForm.name.$pristine">Please type your name</div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="large-4 large-centered columns">
-                        <input type="text" placeholder="Email">
+                    <div class="large-4 large-centered columns form-group" ng-class="{'has-success': registerForm.company.$valid, 'has-error': registerForm.company.$invalid}">
+                        <input type="text" class="form-control" placeholder="Company Name" name="company" ng-model="user.company" ng-required="true" autocomplete="off">
+                        <div class="alert alert-danger" ng-show="registerForm.company.$invalid && !registerForm.company.$pristine">Please type your company name or Freelance</div>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="large-4 large-centered columns">
-                        <input type="text" placeholder="Password">
+                    <div class="large-4 large-centered columns form-group" ng-class="{'has-success': registerForm.email.$valid, 'has-error': registerForm.email.$invalid}">
+                        <input type="email" name="email" class="form-control" placeholder="Email" ng-model="user._id" ng-required="true" autocomplete="off">
+                        <div class="alert alert-danger" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">Please type your email address, we'll send your password here.</div>
                     </div>
                 </div>
 
@@ -85,27 +88,33 @@
                 <div class="row">
                     <div class="radio-inline">
                       <label>
-                        <input type="radio" name="plan" value="basic" checked>
+                        <input type="radio" name="plan" value="basic" checked ng-model="user.plan">
                         Basic ($9.99/month)
                       </label>
                     </div>
                     <div class="radio-inline">
                       <label>
-                        <input type="radio" name="plan" value="business">
+                        <input type="radio" name="plan" value="business" ng-model="user.plan">
                         Business ($39.99/month)
                       </label>
                     </div>
                     <div class="radio-inline">
                       <label>
-                        <input type="radio" name="plan" value="pro">
+                        <input type="radio" name="plan" value="pro" ng-model="user.plan">
                         Professional ($99.99/month)
                       </label>
                     </div>
+                    <br/><br/>
+                    <div class="alert alert-warning" ng-show="!user.plan">
+                        Don't forget to pick a plan
+                    </div>
                 </div>
+                <br/>
 
                 <div class="row">
                     <div class="large-12 columns">
-                        <button type="submit">Sign Up</button>
+                        <button type="submit"
+                         ng-disabled="registerForm.$invalid || !user.plan || disableButtons">Sign Up</button>
                     </div>
                 </div>
             </form>

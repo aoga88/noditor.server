@@ -33,7 +33,7 @@
         </div>
     </header>
 
-    <section id="main" role="main">
+    <section id="main" role="main" ng-controller="LoginController">
 
         <div class="breadcrumb-container">
             <div class="row">
@@ -47,7 +47,7 @@
         </div>
 
         <section class="part">
-            <form action="login.html" method="post">
+            <form ng-submit="login()" method="post">
                 <div class="row title">
                     <div class="large-12 column">
                         <h6>Customer Login</h6>
@@ -56,13 +56,20 @@
 
                 <div class="row">
                     <div class="large-4 large-centered columns">
-                        <input type="text" placeholder="Email">
+                        <input type="email" ng-model="user.email" placeholder="Email">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-4 large-centered columns">
-                        <input type="text" placeholder="Password">
+                        <input type="password" ng-model="user.password" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="row" ng-show="showError">
+                    <div class="large-4 large-centered columns alert alert-danger">
+                        Email or password incorrect. <br/>
+                        Please verify them and try again.
                     </div>
                 </div>
 

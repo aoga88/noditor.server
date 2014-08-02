@@ -1,0 +1,98 @@
+{% extends "../app.html" %}
+
+{% block body %}
+<!-- Breadcrumbs Start -->
+    <div class="row breadcrumbs">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ul class="breadcrumbs">
+          <li><a href="/app"><i class="fa fa-home"></i></a></li>
+          <li><a href="#">Profile</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Breadcrumbs End -->
+
+    <!-- Background Image Profile Start -->
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+          <div class="boxed profile image" ng-controller="ProfileController" ng-init="user = {{ user | json}}">
+            <div class="inner">
+
+              <!-- Profile Title Start -->
+              <div class="title">
+                <h3>My profile</h3>
+                <a href="/app/profile/change-password" class="share-profile">Change Password</a>
+              </div>
+              <!-- Profile Title End -->
+
+              <div class="row profile-data">
+                <!-- Left Side Start -->
+                <div class="col-lg-5 col-md-5 col-sm-3 col-xs-4 text-center">
+
+                  <!-- Profile Avatar Start -->
+                  <div class="profile-avatar">
+                    <img src="http://placehold.it/130x130" alt="[[ user.name ]]" />
+                  </div>
+                  <!-- Profile Avatar End -->
+
+                  <!-- Send Message Start -->
+                  <div class="send-msg">
+                    <button class="btn btn-sm btn-default" type="button">Change Avatar</button>
+                  </div>
+                  <!-- Send Message End -->
+
+                </div>
+                <!-- Left Side End -->
+
+                <!-- Right Side Start -->
+                <div class="col-lg-7 col-md-7 col-sm-9 col-xs-8">
+
+                  <h3 ng-hide="editMode">{{ user.name }}</h3>
+                  <div ng-show="editMode"><input type="text" ng-model="user.name" placeholder="Name"/></div>
+                  <ul class="icon-list">
+                    <li><i class="fa fa-envelope"></i> [[ user.email ]]</li>
+                    <li ng-hide="editMode"><i class="fa fa-building-o"></i> [[ user.company ]]</li>
+                    <li ng-show="editMode"> <input type="text" ng-model="user.company" placeholder="Company"/> </li>
+                    <li ng-show="user.city && (editMode == false)"><i class="fa fa-map-marker"></i> [[ user.city ]], [[ user.country ]]</li>
+                    <li ng-show="editMode"> <input type="text" ng-model="user.city" placeholder="City"/> </li>
+                    <li ng-show="editMode"> <input type="text" ng-model="user.country" placeholder="Country"/> </li>
+                    <li ng-show="user.role && (editMode == false)"> <i class="fa fa-suitcase"></i> [[ user.role ]]</li>
+                    <li ng-show="editMode"> <input type="text" ng-model="user.role" placeholder="Company Role (ex. CTO)"/> </li>
+                    <li ng-show="user.website && (editMode == false)"><i class="fa fa-link"></i> <a target="_blank" ng-href="//[[ user.website ]]">[[ user.website ]]</a></li>
+                    <li ng-show="editMode"> <input type="text" ng-model="user.website" placeholder="Website" /> </li>
+                  </ul>
+
+                  <button class="btn btn-sm btn-info" ng-show="!editMode" ng-click="editMode = true">Edit Profile</button>
+
+                  <buton class="btn btn-sm btn-danger" ng-show="editMode" ng-click="user = {{ user | json }}; editMode = false;">Cancel</buton>
+                  <buton class="btn btn-sm btn-success" ng-show="editMode" ng-click="save()">Save Profile</buton>
+
+                </div>
+                <!-- Right Side End -->
+              </div>
+
+              <!-- Profile Stats Start -->
+              <div class="row">
+                <ul class="profile-stats">
+                  <li class="followers col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                    <p>[[ servers.length ]]</p>
+                    <h3>Servers</h3>
+                  </li>
+                  <li class="following col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                    <p>[[ servers.length ]]</p>
+                    <h3>Sites</h3>
+                  </li>
+                  <li class="projects col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                    <p>[[ servers.length ]]</p>
+                    <h3>Tickets</h3>
+                  </li>
+                </ul>
+              </div>
+              <!-- Profile Stats End -->
+
+            </div>
+          </div>
+
+        </div>
+    <!-- Background Image Profile End -->
+{% endblock %}
