@@ -27,7 +27,8 @@
     "swig": "*",
     "crypto": "*",
     "mailgun-js": "*",
-    "extend": "*"
+    "extend": "*",
+    "express.io": "*"
   },
   "devDependencies": {},
   "bundleDependencies": [],

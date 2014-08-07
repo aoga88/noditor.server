@@ -5,5 +5,10 @@ exports.index = function(req, res)
 
 exports.profile = function(req, res)
 {
-	res.render("app/profile", req.session);
+	res.render("app/profile/index", req.session);
+}
+
+exports.changePassword = function(req, res)
+{
+	res.render("app/profile/change-password", req.session);
 }

@@ -19,14 +19,16 @@ define([
 	'angularRoute',
 	'js/sha1',
 	'js/ngapp/services',
-	'js/ngapp/controllers'
+	'js/ngapp/controllers',
+	'js/highcharts',
+	'js/highcharts-ng'
 ], function($, bt, angular){
 
 	var app = null;
 
 	angular.element(document).ready(function() {
 
-		angular.module('app', ['appServices'])
+		angular.module('app', ["highcharts-ng", 'appServices'])
 			.config(function($interpolateProvider){
 		        $interpolateProvider.startSymbol('[[').endSymbol(']]');
 		    });

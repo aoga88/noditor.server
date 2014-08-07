@@ -1,14 +1,39 @@
 var mongodb = require('../db');
 var extend = require('extend');
 
-exports.find = function(req, res)
+exports.find = function(req, res, apiUser)
 {
-	res.send(req.params);
+	var model = require('../model/' + req.params.entity + '.js');
+	var conditions = req.body;
+	
+	model.Model.find(conditions, function(err, data){
+		if (err) {
+			res.send(err);
+			res.statusCode = 500;
+		} else {
+			res.send(data);
+		}
+	})
+}
+
+exports.insert = function(req, res) {
+	var model = require('../model/' + req.params.entity + '.js');
+	var document = req.body;
+	console.log('inserted');
+
+	object = new model.Model(document);
+
+	object.save(function(e) {
+		if (req.params.entity === 'serverdata') {
+		//here goes the real time
+			req.io.broadcast('updated_' + object.server_id, object);
+		}
+		res.send(object);	
+	});
 }
 
 exports.save = function(req, res)
 {
-	console.log(req.params);
 	var model = require('../model/' + req.params.entity + '.js');
 	var document = req.body.document;
 	var conditions = req.body.conditions;

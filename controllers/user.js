@@ -97,6 +97,13 @@ exports.signupAction = function(req, res)
 }
 
 exports.loginAction = function(req, res) {
+	
+	if (typeof req.body.password === 'undefined' || typeof req.body.email === 'undefined')
+	{
+		res.statusCode = 500;
+		res.send({login: false});
+		return false;
+	}
 	model_user.User.findOne(req.body, function(err, user){
 		if (user === null)
 		{

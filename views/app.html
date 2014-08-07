@@ -15,6 +15,7 @@
   <!-- Google Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Lato:400,100italic,100,300italic,300,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+  <script src="/socket.io/socket.io.js"></script>
 
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -35,11 +36,6 @@
   <link rel="stylesheet" type="text/css" href="/_demo/demo.css">
 
   <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="/assets/flotcharts/excanvas.min.js"></script><![endif]-->
-
-
-
-  <!-- Google Maps -->
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 
   <link rel="shortcut icon" href="favicon.ico" type="image/png">
   <link rel="shortcut icon" type="image/png" href="/favicon.ico" />
@@ -62,9 +58,6 @@
 
   <!-- Sidebar User Profile Start -->
   <div class="sidebar-profile">
-    <div class="user-avatar">
-      <img src="http://www.placehold.it/60x60" alt="Samantha Lenna Wilson" />
-    </div>
     <div class="user-info">
       <a href="/app/profile">{{ user.name }}</a>
     </div>
@@ -84,12 +77,12 @@
         <!-- <span class="notification">4</span> -->
       </a>
     </li>
-    <li class="parent purple">
-      <a href="">
+    <li class="purple">
+      <a href="/app/monitor/server">
         <span class="menu-icon"><i class="fa fa-desktop"></i></span>
         <span class="menu-text">Monitors</span>
       </a>
-      <ul class="child">
+      <!-- <ul class="child">
         <li>
           <a href="/app/monitor">All</a>
         </li>
@@ -97,9 +90,9 @@
           <a href="/app/monitor/sites">Sites</a>
         </li>
         <li>
-          <a href="/app/monitor/servers">Servers</a>
+          <a href="/app/monitor/server">Servers</a>
         </li>
-      </ul>
+      </ul> -->
     </li>
     <li class="parent lightyellow">
       <a href="">
@@ -170,7 +163,7 @@
               <li><a href="/app/support/new"><i class="fa fa-pencil-square-o"></i>New Ticket</a></li>
             </ul>
           </li>
-          <li>
+          <!-- <li>
             <a href="#" class="info">
               <i class="fa fa-info"></i>
               <div class="notify" ng-show="notifications.length != 0">{{ notifications.length }}</div>
@@ -184,7 +177,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
           <li>
             <a href="/logout" class="lock"><i class="fa fa-lock"></i></a>
           </li>
@@ -211,8 +204,6 @@
         <div class="boxed">
             <div class="inner">
 
-              
-
             </div>
           </div>
       </div>
@@ -231,9 +222,6 @@
 
 <!-- Custom Scroll Bar -->
 <script src="/assets/nicescroll/jquery.nicescroll.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
 
 <!-- Demo -->
 <script src="/_demo/all-pages.js"></script>

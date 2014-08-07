@@ -1,0 +1,83 @@
+{% extends "../../app.html" %}
+
+{% block body %}
+  <script type="text/javascript">
+    var server_id = '{{ server._id.toString() }}';
+  </script>
+	<!-- Breadcrumbs Start -->
+    <div class="row breadcrumbs">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ul class="breadcrumbs">
+          <li><a href="/app"><i class="fa fa-home"></i></a></li>
+          <li><a href="/app/monitor/server">Monitor</a></li>
+          <li><a href="#">Server Info</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Breadcrumbs End -->
+
+    <div classs="row">
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-controller="ServerController" ng-init="server = {{ server | json }}; loadServer()">
+
+	    	<div class="boxed">
+	          <div class="inner">
+	          	<div class="row">
+	            	<div class="invoice-logo">
+		              <i class="fa fa-laptop"></i>
+		              <h3>Server Info | {{ server.name }}</h3>
+		            </div>
+		            <div class="invoice-actions text-right">
+		              <a class="btn btn-lg btn-warning" href="/app/monitor/server"><i class="fa fa-angle-left"></i> Back to monitor</a>
+		            </div>
+		        </div>
+		        <br/>
+		        
+	            <div class="row">
+          			<form name="serverForm">
+          				<div class="form-group col-md-12" ng-class="{'has-success': serverForm.name.$valid, 'has-error': serverForm.name.$invalid}">
+          					<label class="control-label">
+          						Server Name:
+          					</label>
+          					{{ server.name }}
+          				</div>
+          				<div class="form-group col-md-6" ng-class="{'has-success': serverForm.os.$valid, 'has-error': serverForm.os.$invalid}">
+          					<label class="control-label">
+          						Operating System
+          					</label>
+          					{{ server.os }}
+          				</div>
+          				<div class="form-group col-md-6" ng-class="{'has-success': serverForm.distro.$valid, 'has-error': serverForm.distro.$invalid}">
+          					<label class="control-label">
+          						Distro / Version
+          					</label>
+          					{{ server.distro }}
+          				</div>
+          				<div class="form-group col-md-12">
+          					<label>
+          						What would you like to know about your server?
+          					</label>
+          					<button type="button" class="btn" ng-class="{'btn-default': !server.configuration.memory, 'btn-success': server.configuration.memory == true}" ng-click="toggleConfiguration('memory')">Memory</button>
+          					<button type="button" class="btn" ng-class="{'btn-default': !server.configuration.cpu, 'btn-success': server.configuration.cpu == true}" ng-click="toggleConfiguration('cpu')">CPU</button>
+          					<button type="button" class="btn" ng-class="{'btn-default': !server.configuration.disk, 'btn-success': server.configuration.disk == true}" ng-click="toggleConfiguration('disk')">Disk Usage</button>
+          					<!-- <button type="button" class="btn" ng-class="{'btn-default': !server.configuration.bandwith, 'btn-success': server.configuration.bandwith == true}" ng-click="toggleConfiguration('bandwith')">Bandwith</button> -->
+          				</div>
+                  <div class="col-md-12">
+                    <div class="col-md-12">
+                      <h4>Server Status</h4>
+                      <br/>
+                      <div class="alert alert-danger" ng-show="serverdata.length == 0">No data</div>
+                      <highchart id="cpuChart" config="cpuChart" class="col-md-6" ng-show="server.configuration.cpu && serverdata.length != 0"></highchart>
+                      <highchart id="memoryChart" config="memoryChart" class="col-md-6" ng-show="server.configuration.memory && serverdata.length != 0"></highchart>
+                      <highchart ng-repeat="disk in diskPartitions" id="diskChart_[[ $index ]]" config="diskChart[disk]" class="col-md-6" ng-show="server.configuration.disk && serverdata.length != 0"></highchart>
+                    </div>
+                  </div>
+          				<div class="row col-md-12">
+		                    <button class="btn btn-primary" ng-click="saveServer()" ng-disabled="serverForm.$invalid || !server.configuration"><i class="fa fa-save"></i> Save Changes</button>
+		                </div>
+          			</form>
+          		</div>
+	          </div>
+	        </div>
+	    </div>
+    </div>
+{% endblock %}
