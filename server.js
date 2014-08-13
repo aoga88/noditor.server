@@ -166,6 +166,12 @@ var routes = [
         method: 'get',
         login:   true
     },
+    {
+        route: '/app/real-time',
+        action: serverController.realTime,
+        method: 'get',
+        login:   true
+    },
 ];
 
 routes.forEach(function(element){

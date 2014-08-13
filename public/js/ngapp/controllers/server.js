@@ -11,7 +11,7 @@ function ServerController($scope, $timeout, Server, ServerData)
 	$scope.loadServer = function() {
 		Server.find({_id: $scope.server._id})
 		.then(function(data){
-			console.log(data);
+			
 		});
 
 		ServerData.find({server_id: $scope.server._id})
@@ -70,7 +70,7 @@ function ServerController($scope, $timeout, Server, ServerData)
              //Configuration for the xAxis. Currently only one x axis can be dynamically controlled.
              //properties currentMin and currentMax provied 2-way binding to the chart's maximimum and minimum
              xAxis: {
-        	  categories: $scope.memoryDates,
+        	    categories: $scope.memoryDates,
               title: {text: 'Date'},
               labels: {
                     rotation: -90,
@@ -81,10 +81,8 @@ function ServerController($scope, $timeout, Server, ServerData)
                 max: 100
             }
          }
-	console.log('updated_' + server_id);
+	
     io.on('updated_' + server_id, function(data){
-      	console.log(data);
-
       	if ($scope.diskPartitions.length === 0) {
       		angular.forEach(data.disk.usage, function(value, key){
   				$scope.diskPartitions.push(key);

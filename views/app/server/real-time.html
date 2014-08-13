@@ -1,0 +1,58 @@
+{% extends "../../app.html" %}
+
+{% block body %}
+  <script type="text/javascript">
+    var server_id = '{{ server._id.toString() }}';
+  </script>
+	<!-- Breadcrumbs Start -->
+    <div class="row breadcrumbs">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ul class="breadcrumbs">
+          <li><a href="/app"><i class="fa fa-home"></i></a></li>
+          <li><a href="/app/monitor/server">Monitor</a></li>
+          <li><a href="#">Server Info</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Breadcrumbs End -->
+
+    <div classs="row">
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-controller="MonitorController" ng-init="user = {{ user | json }};" >
+
+	    	<div class="boxed">
+	          <div class="inner">
+	          	<div class="row">
+	            	<div class="invoice-logo">
+		              <i class="fa fa-laptop"></i>
+		              <h3>Real-Time Charts</h3>
+		            </div>
+		            <div class="invoice-actions text-right">
+		              <a class="btn btn-lg btn-warning" href="/app/monitor/server"><i class="fa fa-angle-left"></i> Back to monitor</a>
+		            </div>
+		        </div>
+		        <br/>
+		        
+	            <div class="row" ng-repeat="server in servers">
+                  <div class="col-md-12">
+                    <div class="col-md-12">
+                      <h4>[[ server.name ]]</h4>
+                      <br/>
+                      <div class="alert alert-danger" ng-show="serverdata[server._id].length == 0">No data</div>
+                      <div class="col-md-6">
+                        <highchart id="cpuChart_[[$index]]" config="cpuChart[server._id]" ng-show="serverdata[server._id].length != 0 && cpuChart[server._id]"></highchart>
+                      </div>
+                      <div class="col-md-6">
+                        <highchart id="memoryChart_[[$index]]" config="memoryChart[server._id]" ng-show="serverdata[server._id].length != 0 && memoryChart[server._id]"></highchart>
+                      </div>
+                      <div class="col-md-6" ng-repeat="disk in diskPartitions[server._id]">
+                        <highchart id="" config="diskChart[server._id][disk]" class="col-md-6" ng-show="serverdata[server._id].length != 0"></highchart>
+                      </div>
+                      
+                    </div>
+                  </div>
+          		</div>
+	          </div>
+	        </div>
+	    </div>
+    </div>
+{% endblock %}

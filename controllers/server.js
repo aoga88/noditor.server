@@ -41,3 +41,7 @@ exports.info = function(req, res) {
 		}
 	})
 }
+
+exports.realTime = function(req, res) {
+	res.render('app/server/real-time', req.session);
+}
